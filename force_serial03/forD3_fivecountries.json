@@ -1,0 +1,64 @@
+{
+  "nodes": [{
+    "key": "China",
+    "value": 4.71400022506714,
+    "Code": "cn"
+  }, {
+    "key": "Germany",
+    "value": 3.72399997711182,
+    "Code": "de"
+  }, {
+    "key": "Mexico",
+    "value": 3.37100005149841,
+    "Code": "mx"
+  }, {
+    "key": "South Africa",
+    "value": 27.372999191284197,
+    "Code": "za"
+  }, {
+    "key": "United States",
+    "value": 4.03599977493286,
+    "Code": "us"
+  }],
+  "links": [{
+    "source": 0,
+    "target": 1,
+    "distance": 0.9900002479553196
+  }, {
+    "source": 0,
+    "target": 2,
+    "distance": 1.3430001735687296
+  }, {
+    "source": 0,
+    "target": 3,
+    "distance": 22.65899896621706
+  }, {
+    "source": 0,
+    "target": 4,
+    "distance": 0.6780004501342791
+  }, {
+    "source": 1,
+    "target": 2,
+    "distance": 0.35299992561341
+  }, {
+    "source": 1,
+    "target": 3,
+    "distance": 23.648999214172377
+  }, {
+    "source": 1,
+    "target": 4,
+    "distance": 0.3119997978210405
+  }, {
+    "source": 2,
+    "target": 3,
+    "distance": 24.001999139785788
+  }, {
+    "source": 2,
+    "target": 4,
+    "distance": 0.6649997234344505
+  }, {
+    "source": 3,
+    "target": 4,
+    "distance": 23.336999416351336
+  }]
+}

@@ -1,0 +1,33 @@
+<html>
+<head>
+<link rel="stylesheet" href="styles.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/p5.js"></script>
+<script language="javascript" type="text/javascript" src="p5.serialport.js"></script>
+</head>
+<body>
+  <button onclick="getCoords()">Click me</button>
+  <!-- <p id="demo"></p> -->
+<div class="controls">
+  <div class="force alpha">
+    <p><label>alpha</label> Simulation activity</p>
+    <div class="alpha_bar" onclick="updateAll();"><div id="alpha_value"></div></div>
+  </div>
+  <div class="force">
+
+    <p><label><input type="checkbox" checked onchange="forceProperties.charge.enabled = this.checked; updateAll();"> charge</label></p>
+    <label title="Negative strength repels nodes. Positive strength attracts nodes.">
+      strength
+      <output id="charge_StrengthSliderOutput">-30</output>
+      <input type="range" min="-200" max="50" value="-30" step=".1" oninput="d3.select('#charge_StrengthSliderOutput').text(value); forceProperties.charge.strength=value; updateAll();">
+    </label>
+  </div>
+</div>
+<div id="forcegraphContainer">
+<svg></svg>
+<div id="nodeContainer"></div>
+</div>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script src="code_employ.js"></script>
+<!-- <script src="serial.js"></script> -->
+</body>
+</html>
