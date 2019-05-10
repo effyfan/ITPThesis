@@ -244,37 +244,41 @@ function getCoords() {
   txt = JSON.stringify(node);
   let txtJson = JSON.parse(txt);
   let group = txtJson._groups[0];
-    for (i = 0; i < group.length; i++) {
-      let items = group[i].__data__;
-      serialJSON.push({
-        "key": items.key,
-        "value": items.value,
-        "x": items.x,
-        "y": items.y
-      })
-    }
-    console.log(serialJSON);
+  for (i = 0; i < group.length; i++) {
+    let items = group[i].__data__;
+    serialJSON.push({
+      "key": items.key,
+      "value": items.value,
+      "x": items.x,
+      "y": items.y
+    })
+  }
+  console.log(serialJSON);
 
-    var serialString = ''
+  var serialString = '';
+  // let message;
+  for (let i = 0; i < serialJSON.length; i++) {
+    xPos = int(map(serialJSON[i].x, 0, 1000, 0, 255));
+    yPos = int(map(serialJSON[i].y, 0, 1000, 0, 255));
+    // let message = String(i) + 'x' + String(xPos) + 'y' + String(yPos) + "\n";
+    // const message = `${i}x${xPos}y${yPos};`;
+    let message = "," + xPos + "," + yPos;
+    serialString = serialString + message;
+    // serial.write(message);
+    // serialString += message;
+    console.log(message);
 
-    for (let i = 0; i < serialJSON.length; i++){
-      xPos = int(map(serialJSON[i].x, 0, 1000, 0, 255));
-      yPos = int(map(serialJSON[i].y, 0, 1000, 0, 255));
-      // let message = String(i) + 'x' + String(xPos) + 'y' + String(yPos) + "\n";
-      // const message = `${i}x${xPos}y${yPos};`;
-      const message = i + "," + xPos + "," + yPos+ "\n";
-      // serialString = serialString + message;
-      serial.write(message);
-      // serialString += message;
-      console.log(message);
-
-      // serial.write(i);
-      // serial.write(xPos);
-      // serial.write(yPos);
-      // console.log("x" + i + ": " + xPos + " y" + i + ": " + yPos);
-    }
-    // console.log(serialString);
-    // serial.write(serialString  + "\n" );
+    // serial.write(i);
+    // serial.write(xPos);
+    // serial.write(yPos);
+    // console.log("x" + i + ": " + xPos + " y" + i + ": " + yPos);
+  }
+  let fake = "," + 120 + "," + 92 + "," + 67 + "," + 134 + "," + 104 + "," + 39 + "," + 171 + "," + 166 + "," + 45 + "," + 77;
+  let zeroing = "," + 0 + "," + 60 + "," + 0 + "," + 50 + "," + 0 + "," + 50 + "," + 0 + "," + 30 + "," + 0 + "," + 80;
+  serial.write(fake);
+  // console.log(serialString);
+  // console.log(serialString);
+  // serial.write(serialString  + "\n" );
   // console.log(serialString)
   // serial.write(serialString);
   serialJSON = [];
@@ -290,7 +294,9 @@ function setup() {
   serial = new p5.SerialPort(); // make a new instance of the serialport library
   // serial.on('data', serialEvent); // callback for when new data arrives
   serial.on('error', serialError); // callback for errors
-  serial.open(portName, { baudrate: 9600}); // open a serial port
+  serial.open(portName, {
+    baudrate: 9600
+  }); // open a serial port
   serial.clear();
 }
 
@@ -298,5 +304,4 @@ function serialError(err) {
   console.log('Something went wrong with the serial port. ' + err);
 }
 
-function draw() {
-}
+function draw() {}
